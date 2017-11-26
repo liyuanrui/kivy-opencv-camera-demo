@@ -1,0 +1,75 @@
+#: import MDTextField kivymd.textfields.MDTextField
+#: import MDRaisedButton kivymd.button.MDRaisedButton
+#: import MDLabel kivymd.label.MDLabel
+
+<MyLayout>:
+    orientation:'vertical'
+    padding:(36,36)
+    pixelcount:pixelcount
+    warncount:warncount
+    timecount:timecount
+    warntime:warntime
+    email:email
+    ScreenManager:
+        id:sm
+        Screen:
+            name:'index'
+            BoxLayout:
+                orientation:'vertical'
+                MDTextField:
+                    id:pixelcount
+                    hint_text:'白色像素点个数'
+                    text:'100'
+                    size_hint_x:1
+                MDTextField:
+                    id:warncount
+                    hint_text:'连续几次才提醒'
+                    text:'5'
+                    size_hint_x:1
+                MDTextField:
+                    id:timecount
+                    hint_text:'每次的间隔秒数(秒)'
+                    text:'15'
+                    size_hint_x:1                
+                MDTextField:
+                    id:warntime
+                    hint_text:'提醒间隔时间(分)'
+                    text:'10'
+                    size_hint_x:1
+                MDTextField:
+                    id:email
+                    hint_text:'提醒邮箱'
+                    text:'i@example.com'
+                    size_hint_x:1
+                Label:
+                    size_hint_y:None
+                    height:'9dp'
+                MDRaisedButton:
+                    text:'启动'
+                    size_hint:1,0.3
+                    on_release:
+                        app.start()
+                        sm.current='camera'
+                Label:          
+                             
+        Screen:
+            name:'camera'
+            BoxLayout:
+                orientation:'vertical'            
+                Camera2:
+                    id:camera
+                    index:0
+                    play:True
+                    resolution:(640,480)
+                ScrollView:
+                    MDLabel:
+                        id:labelshow
+                        text:''
+                        text_size:(self.width,None)
+                        halign:'left'
+                        valign:'top'
+                        size_hint_y:None
+                        height:self.texture_size[1]
+                        color:1,1,1,1
+                Label:
+            
